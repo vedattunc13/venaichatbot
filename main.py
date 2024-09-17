@@ -1,6 +1,20 @@
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 import logging
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+
+# Örnek veri
+texts = ["Merhaba dünya!", "Python ile veri bilimi"]
+
+# Veriyi bir DataFrame'e dönüştür
+df = pd.DataFrame(texts, columns=['text'])
+
+# Basit bir metin vektörizer kullanımı
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(df['text'])
+
+print(X.toarray())
 
 # Botun token'ı (BotFather'dan aldığın token'ı buraya yapıştır)
 TOKEN = '7529075347:AAH4W7z8dEwH_0T3_-2aZw9PpThxq3ms0m0'
